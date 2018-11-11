@@ -1,0 +1,449 @@
+% Monday Mai  27 11:00:00 BRT 2014
+
+% \documentclass[table, usenames, svgnames, dvipsnames]{beamer}
+
+
+
+
+\documentclass[compress,table, usenames, svgnames, dvipsnames, serif]{beamer} 
+\usepackage{beamerthemeshadow}
+\mode<presentation>
+\usepackage[absolute,overlay]{textpos}
+ \usepackage{array}
+\usepackage[brazil]{babel}
+ \usepackage[latin1]{inputenc}
+%\setbeamercolor{normal text}{fg=black,bg=white}
+\usepackage{listings} 
+\usepackage{amsfonts}
+\usepackage{amssymb} 
+\usepackage{ulem}
+\usepackage{etoolbox}
+\usepackage{graphicx}
+\usepackage{multimedia}
+\usepackage{url}
+\usepackage{hyperref}
+
+%\usetheme{Warsaw}
+\usetheme{JuanLesPins}
+\usecolortheme{seagull}
+%\DeclareMathSizes{12}{20}{14}{6}
+% 
+
+\usepackage{hyphenat}
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+\hyphenchar\font=-1
+\sloppy
+
+\hypersetup{
+  pdftitle={Computação científica no estudo da Biomecânica e Controle motor},
+  pdfauthor={R. N. Watanabe, UFABC,2018},
+  pdfpagemode={FullScreen},
+  pdfborder={0 0 0}
+}
+%\usepackage{subfigure}
+%\usepackage{multicol}
+%\usepackage{colortbl}
+
+% ---------------------------------------------------------------------------- %
+% Definições beamer
+% ---------------------------------------------------------------------------- %
+%\usetheme{cambridge}
+%\usetheme{Malmoe}
+%\usecolortheme{Rose}
+% \definecolor{Red}{rgb}{1,0,0}
+% \definecolor{Blue}{rgb}{0,0,1}
+% \definecolor{Green}{rgb}{0,1,0}
+% \definecolor{magenta}{rgb}{1,0,.6}
+% \definecolor{lightblue}{rgb}{0,.5,1}
+% \definecolor{lightpurple}{rgb}{.6,.4,1}
+% \definecolor{gold}{rgb}{.6,.5,0}
+% \definecolor{orange}{rgb}{1,0.4,0}
+% \definecolor{hotpink}{rgb}{1,0,0.5}
+%\definecolor{hotpink}{rgb}{0,1,0.5}
+% \definecolor{newcolor2}{rgb}{.5,.3,.5}
+% \definecolor{newcolor}{rgb}{0,.3,1}
+% \definecolor{newcolor3}{rgb}{1,0,.35}
+% \definecolor{darkgreen1}{rgb}{0, .35, 0}
+ \definecolor{darkgreen}{rgb}{0, .6, 0}
+% \definecolor{darkred}{rgb}{.75,0,0}
+
+%\xdefinecolor{olive}{cmyk}{0.0,0,0.95,0.5}
+% \xdefinecolor{olive}{cmyk}{0.64,0,0.95,0.4}
+% \xdefinecolor{purpleish}{cmyk}{0.75,0.75,0,0}
+%\xdefinecolor{purpleish}{cmyk}{0,0.9,0,1}
+% Algumas definições para o layout
+\setbeamerfont{frametitle}{size=\normalsize}
+\setbeamerfont{title}{size=\normalsize}
+%\beamertemplatenavigationsymbolsempty
+
+% Podem ser utilizadas imagens no background
+%\setbeamercolor{frametitle}{bg=black}
+%\usebackgroundtemplate{\includegraphics[height=\paperheight]{figuras/back.jpg}}
+
+% Os simbolos de navegacao nao sao necessarios
+%\setbeamertemplate{navigation symbols}{}
+
+\let\bbordermatrix\bordermatrix
+\patchcmd{\bbordermatrix}{8.75}{4.75}{}{}
+\patchcmd{\bbordermatrix}{\left(}{\left[}{}{}
+\patchcmd{\bbordermatrix}{\right)}{\right]}{}{}
+
+%\setbeamertemplate{footline}[page number]{}
+%\setbeamertemplate{footline}[text line]{ \hfill {\insertframenumber}}
+\renewcommand{\sin}{\operatorname{sen}}
+\renewcommand{\arcsin}{\operatorname{arcsen}}
+\newcommand{\diag}{\mathop{\mathrm{diag}}}
+% Indice para cada seção (aparece antes de cada section)
+\AtBeginSection[] 
+{
+	\begin{frame}<handout:0>
+	    \frametitle{\textbf{Sumário}}
+            \footnotesize{\tableofcontents[currentsection,hideothersubsections] }             
+	\end{frame}
+}
+\AtBeginSubsection[] 
+{
+	\begin{frame}<handout:0>
+	    \frametitle{\textbf{Sumário}}
+            \footnotesize{\tableofcontents[currentsubsection] }             
+	\end{frame}
+}
+%--------------------------------------------------------------------- %
+% Declarações
+%------------------------------------------------------------------------ %
+\DeclareGraphicsExtensions{.pdf,.jpg,.png} % compilamos apenas com pdflatex
+\graphicspath{{./figuras/}} % caminho onde as figuras estarao disponiveis
+
+% Logotipo no canto superior direito
+\setlength{\TPHorizModule}{1mm}
+\setlength{\TPVertModule}{1mm}
+
+
+% semitransparente
+\newcommand{\semitransp}[2][35]{\color{fg!#1}#2}
+
+\definecolor{myblue}{rgb}{0.9, 0.0, 0.7}
+\definecolor{darkred}{rgb}{0.7, 0.0, 0}
+\definecolor{darkgreenblue}{rgb}{0.0, 0.5, 0.5}
+\definecolor{darkredgreen}{rgb}{0.5, 0.5, 0}
+\definecolor{roxo}{rgb}{0.5,0.25,0.5}
+\definecolor{bege}{rgb}{0.5,0.5,0.25}
+%\definecolor{myblue}{rgb}{0.2, 0.2, 0.70196}
+
+%---------------------------------------------------------------------%
+%---------------------------------------------------------------------- %
+% Título
+% ---------------------------------------------------------------------------- %
+\title[Computação científica no estudo da Biomecânica e Controle motor]{{Computação científica no estudo da Biomecânica e Controle motor}}
+
+\author[Renato Naville Watanabe]{Renato Naville Watanabe}
+
+\subtitle{}
+
+
+\date{{\tiny 12 de novembro de 2018}}
+
+
+% ---------------------------------------------------------------------------- %
+\begin{document}
+% ---------------------------------------------------------------------------- %
+
+% ---------------------------------------------------------------------------- %
+% Primeira página: slide 0
+% ---------------------------------------------------------------------------- %
+% ---------------------------------------------------------------------------- %
+\usebackgroundtemplate{}
+\begin{frame}[plain]
+  \titlepage	  
+\end{frame}
+
+
+
+% ---------------------------------------------------------------------------- %
+% slide 1 >
+% ---------------------------------------------------------------------------- %
+%\setbeamertemplate{footline}{\hrule \MyLogo } %\hfill\includegraphics[height=1.2cm]{figuras/olho1.png}}
+ \setbeamertemplate{footline}{{\scriptsize{\textcolor{gray}{\hspace{.2cm}\insertframenumber}}\hfill \insertauthor}\hspace*{0.5em}\vspace*{0.5em}}
+% \setbeamertemplate{footline}{\hfill}
+% \setbeamertemplate{navigation symbols}{\large {\insertframenumber}}
+% 
+
+% ---------------------------------------------------------------------------- %
+%------------------------------------------------------------------------ %
+\section{Perguntas a serem respondidas}
+%------------------------------------------------------------------------ %
+\begin{frame} 
+\frametitle{\textbf{Tarefas motoras}}
+\begin{picture}(300, 200)
+	\put(0, 90){\includegraphics[width=0.4\textwidth]{correr.png}}
+	\put(190,80){\includegraphics[height=0.4\textheight]{andar.png}}
+	\put(100, 20){\includegraphics[width=0.3\textwidth]{postura.png}}	
+\end{picture}
+\end{frame}
+%------------------------------------------------------------------- %
+\begin{frame} 
+\frametitle{\textbf{Perguntas a serem respondidas}}
+
+
+\begin{itemize}
+    \onslide<1->\item Qual a contribuição de cada um dos músculos na execução das tarefas?
+
+	\onslide<2->\item Qual a origem do comportamento estocástico da força muscular?
+
+	\onslide<3->\item O que causa diferenças na performance motora observadas em pacientes de diferentes patologias?
+
+	\onslide<4->\item Qual a origem de oscilações lentas no torque de uma articulação?
+
+	\onslide<5->\item O que causa a intermitência nos disparos dos motoneurônios durante a manutenção da postura ereta quieta? 
+\end{itemize}
+\end{frame}
+%-------------------------------------------- %
+%-------------------------------------------%
+\begin{frame} 
+\frametitle{\textbf{Maneiras de tentar responder a estas perguntas}}
+
+
+\begin{itemize}
+    \onslide<1-3>\item Realizar experimentos.
+
+	\onslide<2-4>\item Utilizar modelos computacionais e realizar simulações.
+	\onslide<3-4>\item Utilizar técnicas de processamento de sinais.
+\end{itemize}
+\end{frame}
+
+
+
+%----------------------------------------------------------------%
+\section{Modelo neuromusculoesquelético}
+%----------------------------------------------------------------------------------%
+\begin{frame} 
+\frametitle{\textbf{Modelo geral}}
+\begin{picture}(300, 200)
+\put(0, 170){\begin{minipage}{0.58\textwidth}Modelo realista dos núcleos motores
+dos músculos do tríceps sural e do tibial anterior, juntamente com seus proprioceptores e aferentes.\end{minipage}}
+  \put(-10,65){\includegraphics[scale=0.32]{modelStruct.pdf}}
+  \put(183,10){\includegraphics[scale=0.32]{SLC.eps}}
+	\onslide<2->\put(10, 20){\begin{minipage}{0.5\textwidth}
+  \begin{itemize}
+  \tiny
+  \item Cisi e Kohn (2008)
+  \item Elias, Chaud e Kohn (2012)
+  \item Elias e Kohn (2013)
+  \item Watanabe et al. (2013)
+  \item Elias, Watanabe e Kohn (2014)
+  \item Watanabe e Kohn (2015)
+  \item Watanabe e Kohn (2017)
+  \end{itemize}  
+  \end{minipage}}
+\end{picture}
+\end{frame}
+ %-------------------------------------------------------------------
+%------------------------------------------------------------------ %
+\begin{frame} 
+\frametitle{\textbf{Modelo de músculo}}
+ \begin{picture}(300,200)
+
+\put(20,10){\includegraphics[width=0.8\textwidth]{hillModel_muscle_part7.pdf}}
+
+\put(35,10){\colorbox{white}{$\scriptstyle \color{roxo} \mathbf{\frac{d^2 l^M}{dt^2} = \frac{1}{m}\left[\color{darkgreen} F^T\color{roxo}\cos\left(\color{darkred}\alpha \color{roxo}\right) - \left(\color{darkgreenblue} F^{C_I} \color{roxo} + \color{darkredgreen} F^{C_{II}} \color{roxo} + (\color{red} F^{PE} \color{roxo} + \color{blue} F^{PV}\color{roxo})\cos^2\left(\color{darkred} \alpha\color{roxo} \right) \right)\right]}$}}
+   \end{picture}
+\end{frame}
+%-------------------------------------------------------
+\begin{frame} 
+    \frametitle{\textbf{Visão geral do núcleo de neurônios motores}}
+    \begin{picture}(300,200)
+
+	\put(1,10){\includegraphics[width=0.8\textwidth]{poolStruct_PTTSTA_part9.pdf}}
+	\put(190,40){\colorbox{white}{$\frac{dV_s}{dt} = \frac{I_{syn} + I_{Na} + I_{Ks}+ I_{Kf}}{C_s}$}}
+	\put(190,10){\colorbox{white}{$\frac{dV_d}{dt} = \frac{I_{syn}}{C_d}$}}
+   \end{picture}
+\end{frame}
+%----------------------------------------------------------------------------------%
+\begin{frame} 
+\frametitle{\textbf{Modelo geral}}
+\begin{picture}(300, 200)
+\put(0, 170){\begin{minipage}{0.58\textwidth}Modelo realista dos núcleos motores
+dos músculos do tríceps sural e do tibial anterior, juntamente com seus proprioceptores e aferentes.\end{minipage}}
+  \put(-10,65){\includegraphics[scale=0.32]{modelStruct.pdf}}
+  \put(183,10){\includegraphics[scale=0.32]{SLC.eps}}
+	\put(10, 20){\begin{minipage}{0.5\textwidth}
+  \begin{itemize}
+  \tiny
+  \item Cisi e Kohn (2008)
+  \item Elias, Chaud e Kohn (2012)
+  \item Elias e Kohn (2013)
+  \item Watanabe et al. (2013)
+  \item Elias, Watanabe e Kohn (2014)
+  \item Watanabe e Kohn (2015)
+  \item Watanabe e Kohn (2017)
+  \end{itemize}  
+  \end{minipage}}
+  \put(160, 200){\href{https://github.com/rnwatanabe/projectFR}{\tiny https://github.com/rnwatanabe/projectFR}}
+\end{picture}
+\end{frame}
+%------------------------------------------------------------------- %
+%-------------------------------------------%
+\begin{frame}
+\frametitle{\textbf{Intermitência nos disparos do Gastrocnêmio Medial no controle da postura ereta quieta}}
+\begin{center}
+\includegraphics[width=0.6\textwidth]{Heroux2014.png}
+\footnotesize{Heroux et al. (2014)}
+\end{center}
+
+O controle da postura ereta é voluntário ou uma malha de controle automático?
+\end{frame}
+%------------------------------------------------------------------%
+\begin{frame}
+ \frametitle{\textbf{Modelo utilizado}}
+\begin{picture}(300, 200)
+  \put(-10,140){\includegraphics[scale=0.32]{modelStruct.pdf}}
+  \put(183,10){\includegraphics[scale=0.32]{SLC.eps}}
+  \put(10, 0){\includegraphics[trim=50 0 50 0, clip, width=0.2\textwidth]{invertedPendulum.pdf}}
+\end{picture}
+\end{frame}
+%------------------------------------------------------------------%
+\begin{frame}
+ \frametitle{\textbf{Publicação}}
+\begin{picture}(300, 200)
+  \put(20,100){\includegraphics[width=\textwidth]{plos1.png}}
+\end{picture}
+\end{frame}
+%----------------------------------------------------------------------- %
+\begin{frame}
+ \frametitle{\textbf{Resultados da simulação}}
+\begin{picture}(300, 200)
+  \put(10,10){\includegraphics[width = 0.9\textwidth]{posture1.png}} 
+\end{picture}
+\end{frame}
+%-------------------------------------------------------------------------
+\begin{frame}
+ \frametitle{\textbf{Resultados da simulação}}
+\begin{picture}(300, 200)
+  \put(10,50){\includegraphics[width = 0.4\textwidth]{angleOmega.png}} 
+  \put(150,50){\includegraphics[width = 0.4\textwidth]{torqueAngle.png}}
+  \put(10, 170){\begin{minipage}{0.8\textwidth} A intermitência dos disparos dos motoneurônios surge da dinâmica do controle medular.\end{minipage}}
+\end{picture}
+\end{frame}
+%------------------------------------------------------------------------%
+\begin{frame}
+\frametitle{\textbf{Perspectivas de uso do modelo}}
+
+\onslide<1->O modelo apresentado aqui, com algumas modificações, pode ser utilizado para outros estudos, como:
+
+\begin{itemize}
+ \onslide<2->\item Tarefas mais complexas (andar, correr, etc).
+      
+
+      
+ \onslide<3->\item Estudo de patologias afetando os neurônios motores e axônios como ELA, Guillain-Barré e espasticidade.
+ 
+ 
+\end{itemize}
+
+\onslide<6> 
+Código em Fortran disponível em: \url{https://github.com/rnwatanabe/projectFR}.
+
+Código em Python  disponível em: \url{https://github.com/rnwatanabe/projectPR}.
+
+\end{frame}
+%-------------------------------------------%
+\section{Processamento de sinais}
+%-------------------------------------------%
+\begin{frame} 
+\frametitle{\textbf{O uso de processamento de sinais}}
+	 \begin{itemize}
+	  \onslide<1->\item  No estudo do movimento humano podem ser medidos diferentes sinais: EEG, EMG, força, torque, ângulos.
+	  
+	  \onslide<2->\item Com isso, surgem diferentes questões de como esses sinais se relacionam:
+	  
+        \begin{itemize}
+            \onslide<3->\item Existe alguma relação entre esses sinais?
+            
+            \onslide<4->\item Esta relação é linear ou não-linear?
+            
+            \onslide<5->\item Qual a relação de causalidade entre um sinal e outro?
+        \end{itemize}
+     
+     \onslide<6->\item Estas perguntas não são respondidas de forma intuitiva ou com técnicas simples de análise de sinais.
+	 \end{itemize}
+\end{frame}
+%------------------------------------------%
+\begin{frame} 
+\frametitle{\textbf{O conjunto de neurônios motores é um sistema linear ou não-linear?}}
+	  
+Ou: que tipo de transformação a medula faz nos sinais vindos do cérebro para transformá-los em força?
+
+\begin{center}
+\includegraphics[width=0.6\textwidth]{sistEncMed.pdf}
+\end{center}
+
+\end{frame}
+%------------------------------------------------------------------%
+\begin{frame}
+ \frametitle{\textbf{Publicação}}
+ 
+ Análise não-linear no domínio da frequência.
+ 
+ \begin{center}
+  \includegraphics[width=\textwidth]{JN2.png}
+ \end{center}
+
+\end{frame}
+%----------------------------------------------------------------------------------------------------%
+\begin{frame} 
+\frametitle{\textbf{Relação entre comando do encéfalo e atividade muscular}}
+	  
+
+\begin{center}
+\includegraphics[width=0.6\textwidth]{sistEncMed1.pdf}
+\end{center}
+
+\end{frame}
+%-----------------------------------------%
+\begin{frame}
+\frametitle{\textbf{Publicação}}
+\begin{center}
+\includegraphics[width=\textwidth]{NERIEEE.png}
+\end{center}
+\url{https://github.com/rnwatanabe/FROLSIdentification}.  
+\end{frame}
+%-------------------------------------------------------------------------%
+%-------------------------------------------%
+\begin{frame} 
+\frametitle{\textbf{Perspectivas}}
+	 \begin{itemize}
+        \onslide<1->\item Análise da relação entre EEG e EMG usando técnicas não-lineares no domínio da frequência.
+        
+        \onslide<2->\item Quais informações vão do encéfalo para os músculos e quais informações vão dos músculos para o encéfalo.
+        
+        \onslide<3->\item Quais informações enviadas pelo Sistema nervoso central são comuns a diversos músculos e quais são enviadas para músculos específicos. 
+        
+	 \end{itemize}
+\end{frame}
+%-------------------------------------------%
+\section{Conclusões}
+\begin{frame} 
+\frametitle{\textbf{Conclusões}}
+	 
+      O uso da computação científica tem permitido, juntamente com técnicas matemáticas, que se realize análises e se formule hipóteses no estudo da biomecânica e controle do movimento que são impossíveis de se realizar com a simples observação ou intuição.          
+        
+	 
+\end{frame}
+%--------------------------------------
+%--------------------------------------
+\newcounter{finalpage}
+\begin{frame}[plain]
+ \frametitle{\textbf{}}
+ \setcounter{finalpage}{\thepage}
+ \begin{picture}(300,200)
+  \put(100,100){ \LARGE Obrigado}
+  
+  \put(100,60){ \url{https://github.com/rnwatanabe}}
+ \end{picture} 
+\end{frame}
+
+\end{document}
+

@@ -1,0 +1,5 @@
+\babel@toc {brazil}{}
+\beamer@sectionintoc {1}{Perguntas a serem respondidas}{2}{0}{1}
+\beamer@sectionintoc {2}{Modelo neuromusculoesquel\'etico}{13}{0}{2}
+\beamer@sectionintoc {3}{Processamento de sinais}{30}{0}{3}
+\beamer@sectionintoc {4}{Conclus\~oes}{44}{0}{4}

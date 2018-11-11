@@ -1,0 +1,1345 @@
+% Monday Mai  27 11:00:00 BRT 2014
+
+% \documentclass[table, usenames, svgnames, dvipsnames]{beamer}
+
+
+
+
+\documentclass[compress,table, usenames, svgnames, dvipsnames, serif]{beamer} 
+\usepackage{beamerthemeshadow}
+\mode<presentation>
+\usepackage[absolute,overlay]{textpos}
+ \usepackage{array}
+\usepackage[brazil]{babel}
+ \usepackage[latin1]{inputenc}
+%\setbeamercolor{normal text}{fg=black,bg=white}
+\usepackage{listings} 
+\usepackage{amsfonts}
+\usepackage{amssymb} 
+\usepackage{ulem}
+\usepackage{etoolbox}
+\usepackage{graphicx}
+\usepackage{multimedia}
+\usepackage{url}
+\usepackage{hyperref}
+
+%\usetheme{Warsaw}
+\usetheme{JuanLesPins}
+\usecolortheme{seagull}
+%\DeclareMathSizes{12}{20}{14}{6}
+% 
+
+\usepackage{hyphenat}
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+\hyphenchar\font=-1
+\sloppy
+
+\hypersetup{
+  pdftitle={O uso de modelos computacionais na investigação do controle motor},
+  pdfauthor={R. N. Watanabe, UFABC,2017},
+  pdfpagemode={FullScreen},
+  pdfborder={0 0 0}
+}
+%\usepackage{subfigure}
+%\usepackage{multicol}
+%\usepackage{colortbl}
+
+% ---------------------------------------------------------------------------- %
+% Definições beamer
+% ---------------------------------------------------------------------------- %
+%\usetheme{cambridge}
+%\usetheme{Malmoe}
+%\usecolortheme{Rose}
+% \definecolor{Red}{rgb}{1,0,0}
+% \definecolor{Blue}{rgb}{0,0,1}
+% \definecolor{Green}{rgb}{0,1,0}
+% \definecolor{magenta}{rgb}{1,0,.6}
+% \definecolor{lightblue}{rgb}{0,.5,1}
+% \definecolor{lightpurple}{rgb}{.6,.4,1}
+% \definecolor{gold}{rgb}{.6,.5,0}
+% \definecolor{orange}{rgb}{1,0.4,0}
+% \definecolor{hotpink}{rgb}{1,0,0.5}
+%\definecolor{hotpink}{rgb}{0,1,0.5}
+% \definecolor{newcolor2}{rgb}{.5,.3,.5}
+% \definecolor{newcolor}{rgb}{0,.3,1}
+% \definecolor{newcolor3}{rgb}{1,0,.35}
+% \definecolor{darkgreen1}{rgb}{0, .35, 0}
+ \definecolor{darkgreen}{rgb}{0, .6, 0}
+% \definecolor{darkred}{rgb}{.75,0,0}
+
+%\xdefinecolor{olive}{cmyk}{0.0,0,0.95,0.5}
+% \xdefinecolor{olive}{cmyk}{0.64,0,0.95,0.4}
+% \xdefinecolor{purpleish}{cmyk}{0.75,0.75,0,0}
+%\xdefinecolor{purpleish}{cmyk}{0,0.9,0,1}
+% Algumas definições para o layout
+\setbeamerfont{frametitle}{size=\normalsize}
+\setbeamerfont{title}{size=\normalsize}
+%\beamertemplatenavigationsymbolsempty
+
+% Podem ser utilizadas imagens no background
+%\setbeamercolor{frametitle}{bg=black}
+%\usebackgroundtemplate{\includegraphics[height=\paperheight]{figuras/back.jpg}}
+
+% Os simbolos de navegacao nao sao necessarios
+%\setbeamertemplate{navigation symbols}{}
+
+\let\bbordermatrix\bordermatrix
+\patchcmd{\bbordermatrix}{8.75}{4.75}{}{}
+\patchcmd{\bbordermatrix}{\left(}{\left[}{}{}
+\patchcmd{\bbordermatrix}{\right)}{\right]}{}{}
+
+%\setbeamertemplate{footline}[page number]{}
+%\setbeamertemplate{footline}[text line]{ \hfill {\insertframenumber}}
+\renewcommand{\sin}{\operatorname{sen}}
+\renewcommand{\arcsin}{\operatorname{arcsen}}
+\newcommand{\diag}{\mathop{\mathrm{diag}}}
+% Indice para cada seção (aparece antes de cada section)
+\AtBeginSection[] 
+{
+	\begin{frame}<handout:0>
+	    \frametitle{\textbf{Sumário}}
+            \footnotesize{\tableofcontents[currentsection,hideothersubsections] }             
+	\end{frame}
+}
+\AtBeginSubsection[] 
+{
+	\begin{frame}<handout:0>
+	    \frametitle{\textbf{Sumário}}
+            \footnotesize{\tableofcontents[currentsubsection] }             
+	\end{frame}
+}
+%--------------------------------------------------------------------- %
+% Declarações
+%------------------------------------------------------------------------ %
+\DeclareGraphicsExtensions{.pdf,.jpg,.png} % compilamos apenas com pdflatex
+\graphicspath{{./figuras/}} % caminho onde as figuras estarao disponiveis
+
+% Logotipo no canto superior direito
+\setlength{\TPHorizModule}{1mm}
+\setlength{\TPVertModule}{1mm}
+
+
+% semitransparente
+\newcommand{\semitransp}[2][35]{\color{fg!#1}#2}
+
+\definecolor{myblue}{rgb}{0.9, 0.0, 0.7}
+\definecolor{darkred}{rgb}{0.7, 0.0, 0}
+\definecolor{darkgreenblue}{rgb}{0.0, 0.5, 0.5}
+\definecolor{darkredgreen}{rgb}{0.5, 0.5, 0}
+\definecolor{roxo}{rgb}{0.5,0.25,0.5}
+\definecolor{bege}{rgb}{0.5,0.5,0.25}
+%\definecolor{myblue}{rgb}{0.2, 0.2, 0.70196}
+
+%---------------------------------------------------------------------%
+%---------------------------------------------------------------------- %
+% Título
+% ---------------------------------------------------------------------------- %
+\title[Modelos computacionais na investigação do controle motor]{{O uso de modelos computacionais na investigação do controle motor}}
+
+\author[Renato Naville Watanabe]{Renato Naville Watanabe}
+
+\subtitle{}
+
+
+\date{{\tiny 9 de outubro de 2017}}
+
+
+% ---------------------------------------------------------------------------- %
+\begin{document}
+% ---------------------------------------------------------------------------- %
+
+% ---------------------------------------------------------------------------- %
+% Primeira página: slide 0
+% ---------------------------------------------------------------------------- %
+% ---------------------------------------------------------------------------- %
+\usebackgroundtemplate{}
+\begin{frame}[plain]
+  \titlepage	  
+\end{frame}
+
+
+
+% ---------------------------------------------------------------------------- %
+% slide 1 >
+% ---------------------------------------------------------------------------- %
+%\setbeamertemplate{footline}{\hrule \MyLogo } %\hfill\includegraphics[height=1.2cm]{figuras/olho1.png}}
+ \setbeamertemplate{footline}{{\scriptsize{\textcolor{gray}{\hspace{.2cm}\insertframenumber}}\hfill \insertauthor}\hspace*{0.5em}\vspace*{0.5em}}
+% \setbeamertemplate{footline}{\hfill}
+% \setbeamertemplate{navigation symbols}{\large {\insertframenumber}}
+% 
+
+% ---------------------------------------------------------------------------- %
+
+
+
+% % ---------------------------------------------------------------------------- %
+% \begin{frame}
+% \frametitle{\textbf{Sumário}}
+% 	\hspace*{+1.0em}      
+%         \footnotesize{\tableofcontents}  	
+% \end{frame}
+
+%------------------------------------------------------------------------ %
+%------------------------------------------------------------------------ %
+\section{Tarefas motoras}
+%------------------------------------------------------------------------ %
+\begin{frame} 
+\frametitle{\textbf{Tarefas motoras}}
+\begin{picture}(300, 200)
+	\put(0, 90){\includegraphics[width=0.4\textwidth]{correr.png}}
+	\put(190,80){\includegraphics[height=0.4\textheight]{andar.png}}
+	\put(100, 20){\includegraphics[width=0.3\textwidth]{postura.png}}
+	
+\end{picture}
+\end{frame}
+%------------------------------------------------------------------- %
+%----------------------------------------------------------------------- %
+\begin{frame} 
+\frametitle{\textbf{Tarefas motoras analisadas}}
+\begin{picture}(300, 200)
+	\onslide<1->\put(0, 200){\small Tarefa de posição e tarefa de força}
+	\put(0, 90){\includegraphics[width=0.5\textwidth]{plantar.pdf}}
+	\put(20,85){\tiny Figura retirada de Mello (2011)}
+	\onslide<3->\put(200, 200){\small Controle Postural}
+	\put(190,80){\includegraphics[height=0.5\textheight]{posture.pdf}}
+	\put(170,75){\tiny Figura retirada de Magalhães (2011)}
+	\onslide<2->\put(30, 20){\includegraphics[width=0.3\textwidth]{TFforce.png}}
+	\put(60,15){\tiny Figura retirada de Magalhães e Kohn (2012)}
+	\onslide<4->\put(200, 25){\includegraphics[width=0.3\textwidth]{COPCOM.png}}
+	\put(210,10){\tiny Figura retirada de Magalhães e Kohn (2014)}
+\end{picture}
+\end{frame}
+%---------------------------------------------------------------------------- %
+%---------------------------------------------------------------------------- %
+\begin{frame} 
+\frametitle{\textbf{Principais músculos envolvidos nestas tarefas}}
+\begin{picture}(300, 200)
+	\onslide<1->\put(0, 00){\small Tríceps Sural}
+	\put(90, 10){\includegraphics[width=0.3\textwidth]{TSural.png}}
+\end{picture}
+\end{frame}
+%------------------------------------------------------------------- %
+%----------------------------------------------------------------------- %
+\begin{frame} 
+\frametitle{\textbf{Contribuição de cada músculo na geração de torque}}
+\begin{picture}(300, 200)
+	\onslide<1->\put(10, 70){\includegraphics[width=0.3\textwidth]{plantar.pdf}}
+	\put(5,40){\begin{minipage}{0.4\textwidth}\small Qual a contribuição de cada músculo para a geração do torque produzido pela articulação do tornozelo?\end{minipage}}
+	\onslide<2>\put(120, 100){\includegraphics[width=0.7\textwidth]{EMG.png}}
+	\onslide<3->\put(120, 100){\includegraphics[width=0.7\textwidth]{EMGenv.png}}
+	\onslide<4->\put(160, 0){\includegraphics[width=0.35\textwidth]{forceEMG.png}}
+\end{picture}
+\end{frame}
+%---------------------------------------------------------------------------- %
+\section{Modelos}
+%----------------------------------------------------------------%
+%----------------------------------------------------------------%
+\begin{frame}
+ \frametitle{\textbf{Modelo}}
+\onslide<1->É uma representação simplificada de todo ou parte de um sistema. 
+
+\onslide<2->Existem diversos tipos de modelo: animal, físico, matemático, computacional, mental.
+
+\onslide<3->Um mesmo sistema pode ser modelado em diferentes níveis de complexidade. 
+
+\onslide<4->Aqui será falado de modelos matemáticos (equações diferenciais) e computacionais.
+\end{frame}
+%----------------------------------------------------------------%
+%----------------------------------------------------------------%
+\begin{frame}
+ \frametitle{\textbf{Por que modelar?}}
+
+ \begin{itemize}
+   
+  \onslide<1->\item Ao modelar um sistema é possível analisar o seu comportamento dinâmico.
+  
+  \onslide<2->\item Com o modelo é possível analisar variáveis difíceis ou impossíveis de se obter com experimentos.
+  
+ \end{itemize}
+
+\end{frame}
+%--------------------------------------------------------------------------------%
+%--------------------------------------------------------------------------------%
+\begin{frame}
+ \frametitle{\textbf{Como modelar?}}
+
+ \onslide<1->Existem duas maneiras de modelar um sistema:
+ 
+ \begin{itemize}
+ \onslide<2-> \item Utilizando dados experimentais de entrada e saída. Conhecido como Identificação de Sistemas. 
+ 
+ \onslide<3->\item Utilizando as leis que descrevem os fenômenos naturais. Utilizar as leis que descrevem os sistemas (Leis de Newton, Equações de Maxwell, Leis de Kirchoff, Leis de conservação, etc), para escrever as equações de cada parte do sistema e combiná-las para obter as equações diferenciais que regem a dinâmica do sistema.
+
+ \end{itemize}
+ \end{frame} 
+ %-----------------------------------------------------------------------------------%
+ \section{Modelo de músculo}
+ %-----------------------------------------------------------------------------------%
+\begin{frame} 
+\frametitle{\textbf{Modelo de músculo}}
+ \begin{picture}(300,200)
+	\onslide<2>\put(20,10){\includegraphics[width=0.8\textwidth]{hillModel_muscle_part1.pdf}}
+	\onslide<3>\put(20,10){\includegraphics[width=0.8\textwidth]{hillModel_muscle_part2.pdf}}
+	\onslide<4>\put(20,10){\includegraphics[width=0.8\textwidth]{hillModel_muscle_part3.pdf}}
+	\onslide<5>\put(20,10){\includegraphics[width=0.8\textwidth]{hillModel_muscle_part4.pdf}}
+	\onslide<6>\put(20,10){\includegraphics[width=0.8\textwidth]{hillModel_muscle_part5.pdf}}
+	\onslide<7>\put(20,10){\includegraphics[width=0.8\textwidth]{hillModel_muscle_part6.pdf}}
+	\onslide<1>\put(20,10){\includegraphics[width=0.8\textwidth]{hillModel_muscle_part7.pdf}}
+	\onslide<8>\put(20,10){\includegraphics[width=0.8\textwidth]{hillModel_muscle_part8.pdf}}
+	\onslide<2>\put(30, 170){\colorbox{white}{$\mathbf{\color{red} \frac{\exp\left[K^{PE}\left(\frac{l^M(t) - 1}{\epsilon_0^M} \right) \right]}{\exp(K^{PE})}}$}}
+	\onslide<3>\put(250, 145){\colorbox{white}{$\mathbf{\color{blue} bv}$}}
+	\onslide<4>\put(0, 100){\colorbox{white}{$\mathbf{\color{darkgreen} K^T c^T \ln\left[\exp\left(\frac{{l}^T(t)-l_r^T}{c^T} + 1 \right) \right]}$}} 
+	\onslide<5>\put(155, 190){\colorbox{white}{$\mathbf{\color{darkred} \arcsin\left(\frac{\sin(\alpha_0)}{{l}^M(t)} \right)}$}}
+	\onslide<6>\put(180, 105){\colorbox{white}{$\mathbf{\color{darkgreenblue} a_I(t).\text{fl}_{I}({l}^M(t)).\text{fv}_{I}({l}^M(t), {v}(t))}$}}
+	\onslide<7>\put(160, 50){\colorbox{white}{$\mathbf{\color{darkredgreen} a_{II}(t).\text{fl}_{II}({l}^M(t)).\text{fv}_{II}({l}^M(t), {v}(t))}$}}
+	\onslide<1>\put(35,30){\colorbox{white}{$\scriptstyle \color{roxo} \mathbf{\ddot{l^M} = \frac{1}{m}\left[\color{darkgreen} F^T\color{roxo}\cos\left(\color{darkred}\alpha \color{roxo}\right) - \left(\color{darkgreenblue} F^{C_I} \color{roxo} + \color{darkredgreen} F^{C_{II}} \color{roxo} + (\color{red} F^{PE} \color{roxo} + \color{blue} F^{PV}\color{roxo})\cos^2\left(\color{darkred} \alpha\color{roxo} \right) \right)\right]}$}}
+	\onslide<8>\put(120, 35){\colorbox{white}{$\mathbf{\color{bege} l^{MT}=l^M\cos(\alpha)+l^T}$}}
+   \end{picture}
+\end{frame}
+%----------------------------------------------------------------------- %
+%----------------------------------------------------------------------- %
+\begin{frame} 
+\frametitle{\textbf{Contribuição de cada músculo na geração de torque}}
+\begin{picture}(300, 200)
+	\put(10, 70){\includegraphics[width=0.3\textwidth]{plantar.pdf}}
+	\put(5,40){\begin{minipage}{0.4\textwidth}\small Qual a contribuição de cada músculo para a geração do torque produzido pela articulação do tornozelo?\end{minipage}}
+	\put(120, 100){\includegraphics[width=0.7\textwidth]{EMG.png}}
+	\put(120, 100){\includegraphics[width=0.7\textwidth]{EMGenv.png}}
+	\put(160, 0){\includegraphics[width=0.35\textwidth]{forceEMG.png}}
+\end{picture}
+\end{frame}
+%----------------------------------------------------------------------------------%
+\begin{frame} 
+\frametitle{\textbf{Utilização do modelo de músculo com ativação por EMG}}
+\begin{picture}(300, 200)
+	\onslide<1>\put(10, 50){\includegraphics[width=0.8\textwidth]{modelTorque.png}}
+\end{picture}
+\end{frame}
+%----------------------------------------------------------------------------------%
+\begin{frame} 
+\frametitle{\textbf{Utilização do modelo de músculo com ativação por EMG}}
+\begin{picture}(300, 200)
+	\onslide<1>\put(10, 70){\includegraphics[width=0.5\textwidth]{forceHillDriven.png}}
+	\onslide<2>\put(10, 70){\includegraphics[width=0.5\textwidth]{forceContrib.png}}
+\end{picture}
+\end{frame}
+%---------------------------------------------------------------------- %
+%----------------------------------------------------------------------- %
+\section{Modelo neuromusculoesquelético}
+%------------------------------------------------------------------------ %
+\begin{frame} 
+\frametitle{\textbf{Modelo geral}}
+\begin{picture}(300, 200)
+\put(0, 170){\begin{minipage}{0.58\textwidth}Modelo realista dos núcleos motores
+dos músculos do tríceps sural e do tibial anterior, juntamente com seus proprioceptores e aferentes.\end{minipage}}
+  \put(-10,65){\includegraphics[scale=0.32]{modelStruct.pdf}}
+  \put(183,10){\includegraphics[scale=0.32]{SLC.eps}}
+	\onslide<2>\put(10, 20){\begin{minipage}{0.5\textwidth}
+  \begin{itemize}
+  \tiny
+  \item Cisi e Kohn (2008)
+  \item Elias, Chaud e Kohn (2012)
+  \item Elias e Kohn (2013)
+  \item Watanabe et al. (2013)
+  \item Elias, Watanabe e Kohn (2014)
+  \item Watanabe e Kohn (2015)
+  \item Watanabe e Kohn (2017)
+  \end{itemize}
+  \end{minipage}}  
+\end{picture}
+\end{frame}
+
+%------------------------------------------------------------------------ %
+%------------------------------------------------------------------------ %
+%----------------------------------------------------------------------- %
+\subsection{Modelo do núcleo}
+%-----------------------------------------------------------------------%
+   
+% ---------------------------------------------------------------------------- %
+\begin{frame} 
+    \frametitle{\textbf{Modelo do núcleo}}
+    \begin{picture}(300,200)
+	\put(0,50){\includegraphics[scale=0.4]{modelStruct_pool.pdf}}
+% 	\onslide<1>\put(1,10){\includegraphics[width=0.8\textwidth]{poolStruct_PTTSTA_part1.pdf}}
+% 	\onslide<2>\put(1,10){\includegraphics[width=0.8\textwidth]{poolStruct_PTTSTA_part2.pdf}}
+% 	\onslide<3>\put(1,10){\includegraphics[width=0.8\textwidth]{poolStruct_PTTSTA_part3.pdf}}
+% 	\onslide<4>\put(1,10){\includegraphics[width=0.8\textwidth]{poolStruct_PTTSTA_part4.pdf}}
+% 	\onslide<5>\put(1,10){\includegraphics[width=0.8\textwidth]{poolStruct_PTTSTA_part5.pdf}}
+% 	\onslide<6>\put(1,10){\includegraphics[width=0.8\textwidth]{poolStruct_PTTSTA_part6.pdf}}
+% 	\onslide<7>\put(1,10){\includegraphics[width=0.8\textwidth]{poolStruct_PTTSTA_part7.pdf}}
+% 	\onslide<8>\put(1,10){\includegraphics[width=0.8\textwidth]{poolStruct_PTTSTA_part8.pdf}}
+	\onslide<1>\put(1,10){\includegraphics[width=0.8\textwidth]{poolStruct_PTTSTA_part9.pdf}}
+   \end{picture}
+\end{frame}
+%------------------------------------------------------------------------ %
+% \begin{frame} 
+%     \frametitle{\textbf{Geração da condutância sináptica}}
+%     \begin{picture}(300,200)
+% 	  \onslide<1>\put(1,10){\includegraphics[width=0.8\textwidth]{poolStruct_PTTSTA_part9_trasp.pdf}}
+% 	  \onslide<2->\put(1,10){\includegraphics[width=0.8\textwidth]{poolStruct_PTTSTA_part9_trasp_circle.pdf}}
+% 	  \onslide<3>\put(1,5){\includegraphics[width=0.55\textwidth]{SyConductance_part1.pdf}}
+% 	  \onslide<4>\put(1,5){\includegraphics[width=0.55\textwidth]{SyConductance_part2.pdf}}
+% 	  \onslide<4>\put(10,70){$\scriptscriptstyle \mathbf{r(t-t_0) = r_{\infty}+[r(t_0)-r_{\infty}]e^{\left(-\frac{t-t_0}{\tau_r}\right)}, t_0<t<t_1}$}
+% 	   \put(10,50){$\scriptscriptstyle  \mathbf{r(t-t_1)=r(t_1)e^{-\beta(t-t_1)}, t\geqslant t_1}$}
+% 	  \onslide<5>\put(1,5){\includegraphics[width=0.55\textwidth]{SyConductance_part3.pdf}}
+% 	  \put(10,20){$\scriptstyle \mathbf{g_{\text{syn}_n}(t)=r(t). \bar{g}_{\text{syn}}}$}
+% 	  \onslide<6>\put(1,5){\includegraphics[width=0.55\textwidth]{SyConductance_part4.pdf}}	  
+% 	  
+%     \end{picture}
+% \end{frame}
+%------------------------------------------------------------------------ %
+% \begin{frame} 
+% \frametitle{\textbf{Geração do sinal de força muscular}}
+%  \begin{picture}(300,200)
+% 	  \onslide<1->\put(1,10){\includegraphics[width=0.8\textwidth]{poolStruct_PTTSTA_part9_transpact.pdf}}
+% 	  \onslide<3->\put(1,10){\includegraphics[width=0.8\textwidth]{poolStruct_PTTSTA_part9_transpact1.pdf}}
+% 	  \onslide<4->\put(1,10){\includegraphics[width=0.8\textwidth]{poolStruct_PTTSTA_part10.pdf}}
+% 	  \onslide<2->
+% 	  \put(1,85){\includegraphics[width=\textwidth]{actScheme.pdf}}
+% 	  
+%     \end{picture}
+% \end{frame}
+%-------------------------------------------------------------------------%
+%-------------------------------------------------------------------------%
+\subsection{Modelo de músculo}
+%-------------------------------------------------------------------------%
+\begin{frame} 
+\frametitle{\textbf{Modelo de músculo}}
+ \begin{picture}(300,200)
+	\put(0,50){\includegraphics<1->[scale=0.4]{modelStruct_muscle.pdf}}	
+	\onslide<2->
+	\put(20,10){\includegraphics[width=0.8\textwidth]{hillModel_muscle.pdf}}
+   \end{picture}
+\end{frame}
+%-------------------------------------------------------------------------%
+\begin{frame} 
+\frametitle{\textbf{Modelo de músculo}}
+ \begin{picture}(300,200)
+% 	\put(20,10){\includegraphics<1>[width=0.8\textwidth]{hillModel_muscle_part1.pdf}}
+% 	\put(20,10){\includegraphics<2>[width=0.8\textwidth]{hillModel_muscle_part2.pdf}}
+% 	\put(20,10){\includegraphics<3>[width=0.8\textwidth]{hillModel_muscle_part3.pdf}}
+% 	\put(20,10){\includegraphics<4>[width=0.8\textwidth]{hillModel_muscle_part4.pdf}}
+% 	%\put(20,10){\includegraphics<5>[width=0.8\textwidth]{hillModel_muscle_part5.pdf}}
+% 	\put(20,10){\includegraphics<5>[width=0.8\textwidth]{hillModel_muscle_part6.pdf}}
+	\onslide<1>\put(20,10){\includegraphics[width=0.8\textwidth]{hillModel_muscle_part7.pdf}}
+	\onslide<2>\put(20,10){\includegraphics[width=0.8\textwidth]{hillModel_muscle_part8.pdf}}
+% 	\onslide<1>\put(30, 170){\colorbox{white}{$\mathbf{\color{red} \frac{\exp\left[K^{PE}\left(\frac{l^M(t) - 1}{\epsilon_0^M} \right) \right]}{\exp(K^{PE})}}$}}
+% 	\onslide<2>\put(250, 145){\colorbox{white}{$\mathbf{\color{blue} bv}$}}
+% 	\onslide<3>\put(0, 100){\colorbox{white}{$\mathbf{\color{darkgreen} K^T c^T \ln\left[\exp\left(\frac{{l}^T(t)-l_r^T}{c^T} + 1 \right) \right]}$}} 
+% 	\onslide<4>\put(155, 190){\colorbox{white}{$\mathbf{\color{darkred} \arcsin\left(\frac{\sin(\alpha_0)}{{l}^M(t)} \right)}$}}
+% 	\onslide<5>\put(180, 105){\colorbox{white}{$\mathbf{\color{darkgreenblue} a_I(t).\text{fl}_{I}({l}^M(t)).\text{fv}_{I}({l}^M(t), {v}(t))}$}}
+% 	\onslide<5>\put(160, 50){\colorbox{white}{$\mathbf{\color{darkredgreen} a_{II}(t).\text{fl}_{II}({l}^M(t)).\text{fv}_{II}({l}^M(t), {v}(t))}$}}
+	\onslide<1>\put(35,30){\colorbox{white}{$\scriptstyle \color{roxo} \mathbf{\ddot{l^M} = \frac{1}{m}\left[\color{darkgreen} F^T\color{roxo}\cos\left(\color{darkred}\alpha \color{roxo}\right) - \left(\color{darkgreenblue} F^{C_I} \color{roxo} + \color{darkredgreen} F^{C_{II}} \color{roxo} + (\color{red} F^{PE} \color{roxo} + \color{blue} F^{PV}\color{roxo})\cos^2\left(\color{darkred} \alpha\color{roxo} \right) \right)\right]}$}}
+	\onslide<2>\put(120, 35){\colorbox{white}{$\mathbf{\color{bege} l^{MT}=l^M\cos(\alpha)+l^T}$}}
+   \end{picture}
+\end{frame}
+%-------------------------------------------------------------------------%
+%-------------------------------------------------------------------------%
+\subsection{Modelo de proprioceptores}
+%-------------------------------------------------------------------------%
+\begin{frame} 
+\frametitle{\textbf{Proprioceptores}}
+\begin{picture}(300,200)
+	\put(0,50){\includegraphics[scale=0.4]{modelStruct_prop.pdf}}
+   \end{picture}
+\end{frame}
+%-------------------------------------------------------------------------%
+\begin{frame} 
+\frametitle{\textbf{Modelo do órgão tendinoso de Golgi}}
+  \begin{picture}(300,200)
+	  \onslide<1>\put(20,10){\includegraphics[width=0.8\textwidth]{hillModel_muscle.pdf}}
+	  \onslide<2>\put(20,10){\includegraphics[width=0.8\textwidth]{hillModel_GTO.pdf}}
+	  \onslide<3->\put(20,10){\includegraphics[width=0.8\textwidth]{hillModel_GTO_part1.pdf}}
+	  \put(150, 0){\tiny Modelo de Lin e Crago (2002)}
+	  \onslide<4->\put(100,70){\colorbox{white}{$\mathbf{G(t) = G_1\ln\left(\frac{F^T(t)}{G_2} + 1 \right)}$}}
+	  \onslide<5->\put(100,40){\colorbox{white}{$\mathbf{\frac{f_{I_b}(s)}{G(s)} = 40\frac{1,70s^2+2,58s+0,40}{s^2+2,20s+0,40}}$}}
+\end{picture} 
+\end{frame}
+%-------------------------------------------------------------------------%
+\begin{frame} 
+\frametitle{\textbf{Modelo do fuso muscular}}
+    \begin{picture}(300,200)
+	    \onslide<1>\put(20,10){\includegraphics[width=0.8\textwidth]{hillModel_GTO.pdf}}
+	    \onslide<2>\put(20,10){\includegraphics[width=0.8\textwidth]{hillModel.pdf}}
+	    \onslide<3->\put(20,10){\includegraphics[width=0.8\textwidth]{hillModel_MS.pdf}}
+	    \put(150, 0){\tiny Modelo de Mileusnic et al. (2006)}
+	    \onslide<4->\put(0, 100){\colorbox{white}{$f_{Ia}$-resposta ao comportamento dinâmico e estático de $l^M$}}
+	    \onslide<5->\put(0, 80){\colorbox{white}{$f_{II}$-resposta ao comportamento estático de $l^M$}}
+    \end{picture}
+\end{frame}
+% %-------------------------------------------------------------------------%
+% \begin{frame} 
+% \frametitle{\textbf{Conversão da frequência de disparos em processos de renovação}}
+%  Os processos em cada axônio são gerados com os intervalos entre os disparos seguindo um processo Gamma com a frequência fornecida pelo modelo de proprioceptor.
+%  
+%  Exemplo com $f_{Ib}=70~Hz$:
+%  
+%  \includegraphics[width=0.5\textwidth]{renewalGeneration.pdf}
+% \end{frame}
+%-------------------------------------------------------------------------%
+%-------------------------------------------------------------------------%
+\subsection{Modelo mecânico}
+%-------------------------------------------------------------------------%
+\newcount\figxposa
+\newcount\figyposa
+\begin{frame} 
+\frametitle{\textbf{Modelo mecânico}}
+\begin{picture}(300,200)
+	\onslide<1-6>\put(0, 50){\includegraphics[scale=0.4]{modelStruct_mec.pdf}}
+	      \onslide<2->\put(20, 10){\includegraphics[width=0.4\textwidth]{foot.pdf}}
+	      \onslide<2->\put(143, 10){\includegraphics[trim=50 0 50 0, clip, width=0.256\textwidth]{invertedPendulum.pdf}}
+	      \onslide<3->\put(0,170){$\scriptstyle \mathbf{M_p= b_A\dot{\theta}  + K_A\theta}$}
+	      \put(235,170){$\scriptstyle  \mathbf{M_p= b_A\dot{\theta}  + K_A\theta}$}
+	      \onslide<4->\put(0,150){$\scriptstyle  \mathbf{M_g = d_fm_fg\sin(\theta_l-\theta)}$}
+	      \put(235,150){$\scriptstyle  \mathbf{M_g=m_Bgh_B\sin(\theta)}$}
+	      \onslide<5->\put(0, 115){$\scriptstyle  \mathbf{\ddot{\theta} = \frac{M - M_g - M_p + W}{J_f}}$}
+	      \put(235, 115){$\scriptstyle  \mathbf{\ddot{\theta} = \frac{M - M_p + M_g}{J_B}}$}
+	      \onslide<6->\put(20, 195){\bf Articulação do tornozelo~~~~Controle postural}
+   \end{picture}
+\end{frame}
+%-------------------------------------------------------------------------%
+% \begin{frame} 
+% \frametitle{\textbf{Obtenção do momento e do comprimento do músculo-tendão}}
+% %\setbeamercovered{transparent}
+% \begin{picture}(300, 200)
+% 	      \onslide<1-2>\put(0, 100){\includegraphics[width=0.6\textwidth]{lmt.pdf}}     
+% 	      \onslide<2>\put(140, 0){\includegraphics[width=0.6\textwidth]{armmoment.pdf}}    
+% 	      \onslide<3-4>\put(0, 50){\includegraphics[scale=0.4]{modelStruct_mec.pdf}}
+% 	      \onslide<1->\put(195, 155){\colorbox{white}{$\mathbf{l^{MT}=\displaystyle\sum_{k=0}^4\eta_k\theta^k}$}}
+% 	      \onslide<2-3>\put(50, 50){\colorbox{white}{$\mathbf{m_x=\displaystyle\sum_{k=0}^4\lambda_k\theta^k}$}}
+% 	      \onslide<2>\put(50,0){\tiny Curvas retiradas de Arnold et al. (2010)}
+% 	      \onslide<4>\put(50, 50){\colorbox{white}{$\mathbf{m_x=\displaystyle\sum_{k=0}^4\lambda_k\theta^k \rightarrow M(t)=F(t).m_x}$}}
+% 	\end{picture} 
+% \end{frame}
+%-------------------------------------------------------------------------%
+\section{Aplicações do modelo}
+%----------------------------------------------------------------------------------%
+%----------------------------------------------------------------------------------%
+\begin{frame} 
+\frametitle{\textbf{Tarefas motoras analisadas}}
+\begin{picture}(300, 200)
+	\onslide<1->\put(1, 3){\includegraphics[width=0.3\textwidth]{TFforce.png}}
+	\put(1,1){\tiny Magalhães e Kohn (2012)}
+	\put(90, 25){\includegraphics[width=0.3\textwidth]{COPCOM.png}}
+	\put(90,10){\tiny Magalhães e Kohn (2014)}
+	\onslide<1>\put(5,185){\begin{minipage}{0.65\textwidth}Qual a origem do comportamento estocástico da força muscular? \end{minipage}}
+	\onslide<2->\put(2,80){\includegraphics[width=0.4\textwidth]{Coer13.png}}
+	\put(5,75){\tiny Yang et al. (2010)}
+	\onslide<2>\put(5,185){\begin{minipage}{0.65\textwidth}Por que aparece um pico em 20 Hz na coerência entre EEG e EMG? \end{minipage}}
+	\onslide<3->\put(190,5){\includegraphics[width=0.35\textwidth]{TorqueSpectrumSimExpTF_exp.pdf}}
+	\put(200,1){\tiny Mello (2011)}
+	\onslide<3>\put(5,185){\begin{minipage}{0.65\textwidth}Qual a origem dos picos em baixas frequências no torque de uma articulação?\end{minipage}}
+	\onslide<4->\put(195, 100){\includegraphics[width=0.45\textwidth]{Heroux2014.png}}
+	\put(210,950){\tiny Héroux et al. (2014)}
+	\onslide<4>\put(-10,188){\begin{minipage}{0.7\textwidth}O que causa a intermitência nos disparos dos motoneurônios durante a manutenção da postura ereta quieta?\end{minipage}}
+	
+\end{picture}
+\end{frame}
+%----------------------------------------------------------------------- %
+\subsection{Não linearidade do núcleo de motoneurônios}
+%------------------------------------------------------------------------%
+\begin{frame}
+  \frametitle{\textbf{Coerência na banda beta (20 Hz) e linearidade do núcleo}}
+  \setlength{\fboxsep}{0pt}%
+ \begin{picture}(300,200)
+    \onslide<2->\put(5,140){\begin{minipage}{\textwidth}
+		  \fbox{\includegraphics[width=0.5\textwidth]{Coer2.png}}
+                \end{minipage}
+    }
+    \put(60,180){\begin{minipage}{\textwidth}
+		  \footnotesize{Conway et al. (1995)}
+                \end{minipage}
+    }
+    \onslide<3->\put(2,110){\begin{minipage}{\textwidth}
+		  \fbox{\includegraphics[width=0.5\textwidth]{Coer1.png}}
+                \end{minipage}
+    }
+    \put(37,160){\begin{minipage}{\textwidth}
+		  \footnotesize{Baker, Olivier e Lemon (1997)}
+                \end{minipage}
+    }  
+    \onslide<4->\put(10,100){\begin{minipage}{\textwidth}
+		  \fbox{\includegraphics[width=0.5\textwidth]{Coer6.png}}
+                \end{minipage}
+    }
+    \put(50,140){\begin{minipage}{\textwidth}
+		  \footnotesize{Salenius et al. (1997)}
+                \end{minipage}
+    }
+    \onslide<5->\put(1,120){\begin{minipage}{\textwidth}
+		  \fbox{\includegraphics[width=0.5\textwidth]{Coer7.png}}
+                \end{minipage}
+    }
+    \put(51,170){\begin{minipage}{\textwidth}
+		  \footnotesize{Halliday et al. (1998)}
+                \end{minipage}
+    }
+    \onslide<6->\put(10,110){\begin{minipage}{\textwidth}
+		  \fbox{\includegraphics[width=0.3\textwidth]{Coer8.png}}
+                \end{minipage}
+    }
+    \put(20,187){\begin{minipage}{\textwidth}
+		  \footnotesize{Mima et al. (1999)}
+                \end{minipage}
+    }
+    \onslide<7->\put(15,60){\begin{minipage}{\textwidth}
+		  \fbox{\includegraphics[width=0.45\textwidth]{Coer9.png}}
+                \end{minipage}
+    }
+    \put(75,100){\begin{minipage}{\textwidth}
+		  \footnotesize{Kilner et al. (2000)}
+                \end{minipage}
+    }
+    \onslide<8->\put(4,80){\begin{minipage}{\textwidth}
+		  \fbox{\includegraphics[width=0.5\textwidth]{Coer10.png}}
+                \end{minipage}
+    }
+    \put(24,130){\begin{minipage}{\textwidth}
+		  \footnotesize{Mima, Matsuoka e Hallett (2001)}
+                \end{minipage}
+    }
+     \onslide<9->\put(7,130){\begin{minipage}{\textwidth}
+		  \fbox{\includegraphics[width=0.35\textwidth]{Coer11.png}}
+                \end{minipage}
+    }
+    \put(27,202){\begin{minipage}{\textwidth}
+		  \footnotesize{Baker e Baker (2002)}
+                \end{minipage}
+    }
+    \onslide<10->\put(1,80){\begin{minipage}{\textwidth}
+		  \fbox{\includegraphics[width=0.5\textwidth]{Coer3.png}}
+                \end{minipage}
+    }    
+    \put(66,128){\begin{minipage}{\textwidth}
+		  \footnotesize{Shoffelen et al.(2005)}
+                \end{minipage}
+    }
+    \onslide<11->\put(3,80){\begin{minipage}{\textwidth}
+		  \fbox{\includegraphics[width=0.5\textwidth]{Coer4.png}}
+                \end{minipage}
+    }
+    \put(63,130){\begin{minipage}{\textwidth}
+		  \footnotesize{Kristeva et al. (2007)}
+                \end{minipage}
+    }
+    \onslide<12->\put(7,50){\begin{minipage}{\textwidth}
+		  \fbox{\includegraphics[width=0.5\textwidth]{Coer12.png}}
+                \end{minipage}
+    }
+    \put(55,100){\begin{minipage}{\textwidth}
+		  \footnotesize{Chakarov et al. (2009)}
+                \end{minipage}
+    }
+    \onslide<13->\put(8,120){\begin{minipage}{\textwidth}
+		  \fbox{\includegraphics[width=0.5\textwidth]{Coer13.png}}
+                \end{minipage}
+    }
+    \put(38,175){\begin{minipage}{\textwidth}
+		  \footnotesize{Yang et al. (2010)}
+                \end{minipage}
+    }
+    \onslide<14->\put(3,160){\begin{minipage}{\textwidth}
+		  \fbox{\includegraphics[width=0.65\textwidth]{Coer15.png}}
+                \end{minipage}
+    }
+    \put(30,185){\begin{minipage}{\textwidth}
+		  \footnotesize{Engel e Fries (2010)}
+                \end{minipage}
+    }
+    \onslide<15->\put(6,130){\begin{minipage}{\textwidth}
+		  \fbox{\includegraphics[width=0.45\textwidth]{Coer5.png}}
+                \end{minipage}
+    }
+    \put(46,180){\begin{minipage}{\textwidth}
+		  \footnotesize{Gwin e Ferris (2012)}
+                \end{minipage}
+    }
+    \onslide<16->\put(7,90){\begin{minipage}{\textwidth}
+		  \fbox{\includegraphics[width=0.7\textwidth]{Coer14.png}}
+                \end{minipage}
+    }
+    \put(27,135){\begin{minipage}{\textwidth}
+		  \footnotesize{Ushiyama et al. (2012)}
+                \end{minipage}
+    }
+    \onslide<17->\put(100,80){\begin{minipage}{\textwidth}
+		  \fbox{\includegraphics[width=0.7\textwidth]{Coer17.png}}
+                \end{minipage}
+    }
+    \put(110,160){\begin{minipage}{\textwidth}
+		  \footnotesize{Figura de Farina e Negro (2015)}
+                \end{minipage}
+    }
+    \onslide<18->\put(70,55){\begin{minipage}{\textwidth}
+		  \fbox{\includegraphics[width=0.7\textwidth]{Coer16.png}}
+                \end{minipage}
+    }
+    \put(78,95){\begin{minipage}{\textwidth}
+		  \footnotesize{Farina e Negro (2015)}
+                \end{minipage}
+    }
+ \end{picture}
+\end{frame}
+%-----------------------------------------------------------------------
+\begin{frame} 
+\frametitle{\textbf{Simulações com o modelo}}
+	  \begin{picture}(300,200)
+	      \put(20,130){\includegraphics[width=0.6\textwidth]{modelStruct_ident.pdf}}
+	      \put(50,0){\includegraphics[height=0.7\textheight]{poolStruct_PTTSTA_betaBand.pdf}}
+	      \put(120, 100){\begin{minipage}{0.6\textwidth} 
+		  \begin{itemize} 
+		  \item São utilizados {\bf 400 axônios} no comando descendente com distribuição Poisson.
+		  \item Cada axônio do comando descendente se conecta com aproximadamente 30\% dos motoneurônios, de forma aleatória ({\bf conectividade de 30\%}).
+		  \item Foram obtidos dados em {\bf 15\% da contração voluntária máxima}.
+		  \end{itemize} 
+	      \end{minipage}}
+	   \end{picture}
+\end{frame}
+%------------------------------------------------------------------%
+\begin{frame}
+ \frametitle{\textbf{Publicação}}
+\begin{picture}(300, 200)
+  \put(20,80){\includegraphics[width=\textwidth]{JN2.png}}
+\end{picture}
+\end{frame}
+% --------------------------------------------------------------------- %
+\begin{frame}
+\frametitle{\textbf{Relação entrada-saída é linear?}}
+\begin{picture}(300,200)
+    \onslide<1->\put(10,180){$\scriptstyle \gamma^2_{uy}(f)=\frac{\left|S_{uy}(f) \right|^2}{S_{uu}(f).S_{yy}(f)}$}
+    \onslide<2->\put(50, 5){\includegraphics[width=0.6\textwidth]{coherenceInputOutput.pdf}}
+    \onslide<3>\put(100, 180){$\scriptstyle 0 < \gamma^2_{uy}(f)<1\Rightarrow \left\{\begin{array}{l} \, \\ \, \\ \, \end{array}\right.$}
+    \onslide<4>\put(100, 180){$\scriptstyle 0 < \gamma^2_{uy}(f)<1\Rightarrow \left\{\begin{array}{l}\text{\small ruído presente na entrada ou na saída}\\ \, \\ \, \end{array}\right.$}
+    \onslide<5>\put(100, 180){$\scriptstyle 0 < \gamma^2_{uy}(f)<1 \Rightarrow \left\{\begin{array}{l}\text{\small ruído presente na entrada ou na saída}\\ \text{\small sistema não linear} \\ \, \end{array}\right.$}
+    \onslide<6>\put(100, 180){$\scriptstyle 0 < \gamma^2_{uy}(f)<1 \Rightarrow \left\{\begin{array}{l}\text{\small ruído presente na entrada ou na saída}\\ \text{\small sistema não linear} \\ \text{\small entradas não consideradas} \end{array}\right.$}
+    \onslide<7>\put(100, 180){$\scriptstyle 0 < \gamma^2_{uy}(f)<1 \Rightarrow \left\{\begin{array}{l} {\text{\small\sout{ruído presente na entrada ou na saída}}}\\ \text{\small sistema não linear} \\ \text{\small entradas não consideradas} \end{array}\right.$}
+    \onslide<8>\put(100, 180){$\scriptstyle 0 < \gamma^2_{uy}(f)<1 \Rightarrow \left\{\begin{array}{l} {\text{\small\sout{ruído presente na entrada ou na saída}}}\\ \text{\small sistema não linear} \\ \text{\small \sout{entradas não consideradas}} \end{array}\right.$}
+\end{picture}
+\end{frame}
+%----------------------------------------------------------------------%
+\begin{frame}
+\frametitle{\textbf{Frequência de disparos do comando descendente}}
+ \begin{picture}(300,200)
+    \put(5,170){\begin{minipage}{\textwidth}\begin{equation*}
+      \onslide<1-7>FR(t) = \left\{\begin{array}{ccr}\onslide<2-7>\color[rgb]{0,0,1}65&,& \color[rgb]{0,0,1}0\leqslant t < 60 \text{ s}\\					 			\onslide<4-7>\color[rgb]{0.6,0.4,0.4} 65\onslide<5-7>+20\sin(2\pi20t)&,&\onslide<4-7> \color[rgb]{0.6,0.4,0.4} 60 \text{ s} \leqslant t < 120\text{ s} \\
+				      \onslide<7>\color[rgb]{0.2,1,0.2} 65+20\sin(2\pi20t)&,& \color[rgb]{0.2,1,0.2} 120 \text{ s} \leqslant t < 180\text{ s}\end{array}\right.\\
+    \end{equation*}
+    \end{minipage}}
+    \onslide<2-3>\put(5,60){\begin{minipage}{0.5\textwidth}
+	      \centering
+              \includegraphics[width=0.9\textwidth]{ModSignalJN1_1.png}              
+              \end{minipage}
+	     }
+    \onslide<3-5>\put(150,63){\begin{minipage}{0.5\textwidth}
+	      \centering
+              \includegraphics[width=0.9\textwidth]{ForceSteady_1.png}              
+              \end{minipage}
+	     }	  
+    \onslide<4>\put(5,63){\begin{minipage}{0.5\textwidth}
+      \centering
+      \includegraphics[width=0.9\textwidth]{ModSignalJN1_15.png}              
+      \end{minipage}
+    }
+    \onslide<5-6>\put(5,60){\begin{minipage}{0.5\textwidth}
+      \centering
+      \includegraphics[width=0.9\textwidth]{ModSignalJN1_2.png}              
+      \end{minipage}
+    }
+    \onslide<6-8>\put(150,63){\begin{minipage}{0.5\textwidth}
+	      \centering
+              \includegraphics[width=0.9\textwidth]{ForceSteady_2.png}              
+              \end{minipage}
+	     }
+    \onslide<7>\put(5,63){\begin{minipage}{0.5\textwidth}
+	      \centering
+              \includegraphics[width=0.9\textwidth]{ModSignalJN1_25.png}              
+              \end{minipage}
+	     }
+    \onslide<8->\put(5,173.5){\begin{minipage}{\textwidth}\begin{equation*}
+     FR(t) = \left\{\begin{array}{ccr}\color[rgb]{0,0,1}65&,& \color[rgb]{0,0,1}0\leqslant t < 60 \text{ s}\\					 			\color[rgb]{0.6,0.4,0.4} 65+20\sin(2\pi20t)&,& \color[rgb]{0.6,0.4,0.4} 60 \text{ s} \leqslant t < 120\text{ s} \\
+				      \color[rgb]{0.2,1,0.2} 58+20\sin(2\pi20t)&,& \color[rgb]{0.2,1,0.2} 120 \text{ s} \leqslant t < 180\text{ s}\end{array}\right.\\
+    \end{equation*}
+    \end{minipage}}
+    \onslide<8-9>\put(5,60){\begin{minipage}{0.5\textwidth}
+	      \centering
+              \includegraphics[width=0.9\textwidth]{ModSignalJN1.png}              
+              \end{minipage}
+	     }
+    \onslide<9>\put(150,63){\begin{minipage}{0.5\textwidth}
+	      \centering
+              \includegraphics[width=0.9\textwidth]{ForceSteady_3.png}              
+              \end{minipage}
+	     }    
+\end{picture}
+\end{frame}
+%----------------------------------------------------------------------%
+\begin{frame}
+\frametitle{\textbf{Causa neural da não linearidade}}
+ \newcount\figxposa
+ \newcount\figxposb
+ \newcount\figyposa
+ \newcount\figyposb
+ \newdimen\figwidth
+ \begin{picture}(300,200)
+     
+    \onslide<1>\put(70,90){\begin{minipage}{0.5\textwidth}
+	      \centering
+              \includegraphics[width=0.9\textwidth]{steadyAnal1.png}              
+              \end{minipage}
+	     }
+    \onslide<2>\put(70,90){\begin{minipage}{0.5\textwidth}
+	      \centering
+              \includegraphics[width=0.9\textwidth]{steadyAnal2.png}              
+              \end{minipage}
+	     }
+    \onslide<3-4>\put(70,90){\begin{minipage}{0.5\textwidth}
+	      \centering
+	      \includegraphics[width=0.9\textwidth]{steadyAnal3.png}
+              \end{minipage}
+	     }
+     \onslide<4>\put(250, 80){\href{https://www.youtube.com/watch?v=2UR8DZMHQtU}{\includegraphics[width=0.15\textwidth]{vervideo.png}}}
+     \onslide<5>\put(70,90){\begin{minipage}{0.5\textwidth}
+	      \centering
+              \includegraphics[width=0.9\textwidth]{steadyAnal4.png}              
+              \end{minipage}
+	     }	     
+\end{picture}
+\end{frame}
+% %-------------------------------------------------------------------------------------%
+% \begin{frame}
+% \frametitle{\textbf{Frequência de disparos do comando descendente}}
+%  \begin{picture}(300,200)
+%     \put(2,170){\begin{minipage}{\textwidth}\begin{equation*}
+%       \onslide<1->FR(t) = \left\{\begin{array}{ccr}\onslide<2->\color[rgb]{0,0,1}65&,& \color[rgb]{0,0,1}0\leqslant t < 60 \text{ s}\\					 			\onslide<4->\color[rgb]{1,0,0} 65+20\sin(2\pi20t)\onslide<5->[1+0,5\sin(2\pi t)]&\onslide<4->,& \color[rgb]{1,0,0} 60 \text{ s} \leqslant t < 120\text{ s}\end{array}\right.\\
+%     \end{equation*}
+%     \end{minipage}}
+%     \onslide<2-3>\put(0,60){\begin{minipage}{0.5\textwidth}
+%       %\centering
+%       \includegraphics[width=0.912\textwidth]{ModSignalJN2_25.png}              
+%       \end{minipage}
+%     }
+%     \onslide<3-6>\put(145,62.8){\begin{minipage}{0.5\textwidth}
+%       \centering
+%       \includegraphics[width=0.915\textwidth]{ForceOsc_2.png}              
+%       \end{minipage}
+%     }
+%     \onslide<4>\put(0,60){\begin{minipage}{0.5\textwidth}
+%       %\centering
+%       \includegraphics[width=0.915\textwidth]{ModSignalJN2_3.png}              
+%       \end{minipage}
+%     } 
+%     \onslide<5->\put(0,60){\begin{minipage}{0.5\textwidth}
+%       %\centering
+%       \includegraphics[width=0.915\textwidth]{ModSignalJN2_4.png}              
+%       \end{minipage}
+%     }
+%     \onslide<6->\put(145,62.8){\begin{minipage}{0.5\textwidth}
+%       \centering
+%       \includegraphics[width=0.915\textwidth]{ForceOsc_3.png}              
+%       \end{minipage}
+%     }
+% \end{picture}
+% \end{frame}
+% %-------------------------------------------------------------------------------------%
+% \begin{frame}
+%     \begin{picture}(300,200)
+%      \animate<1-12>
+%       \animatevalue<1-12>{\figyposa}{48}{172}
+%       \animatevalue<1-12>{\figyposb}{54}{20}
+%      \animatevalue<1-12>{\figxposa}{0}{78}
+%      \animatevalue<1-12>{\figxposb}{145}{78}
+%      \animatevalue<1-12>{\figscale}{0.37\textwidth}{0.15\textwidth}
+%      \animatevalue<1-12>{\figwidth}{0.45\textwidth}{0.35\textwidth}
+%      \onslide<1-12>\put(\figxposa, \figyposa){\begin{minipage}{0.5\textwidth}
+%       %\centering
+%       \includegraphics[width=\figwidth, height=\figscale]{ModSignalJN2_4.png}              
+%       \end{minipage}
+%     }
+%     \onslide<1-12>\put(\figxposb, \figyposb){\begin{minipage}{0.5\textwidth}
+%       \includegraphics[width=\figwidth, height=1.03\figscale]{ForceOsc_3.png}              
+%       \end{minipage}
+%     }
+%     \onslide<13>\put(5,90){\begin{minipage}{\textwidth}
+%       \includegraphics[width=0.85\textwidth]{oscilAnal_1.png}              
+%       \end{minipage}
+%     }
+%     \onslide<14>\put(5,90){\begin{minipage}{\textwidth}
+%       \includegraphics[width=0.85\textwidth]{oscilAnal_2.png}              
+%       \end{minipage}
+%     }
+%     \onslide<15>\put(5,90){\begin{minipage}{\textwidth}
+%       \includegraphics[width=0.85\textwidth]{oscilAnal_3.png}              
+%       \end{minipage}
+%     }
+%     \onslide<16>\put(5,90){\begin{minipage}{\textwidth}
+%       \includegraphics[width=0.85\textwidth]{oscilAnal_4.png}              
+%       \end{minipage}
+%     }
+%     \onslide<17>\put(5,90){\begin{minipage}{\textwidth}
+%       \includegraphics[width=0.85\textwidth]{oscilAnal_5.png}              
+%       \end{minipage}
+%     }
+%     \onslide<18>\put(5,90){\begin{minipage}{\textwidth}
+%       \includegraphics[width=0.85\textwidth]{oscilAnal_6.png}              
+%       \end{minipage}
+%     }
+%     \onslide<19>\put(5,90){\begin{minipage}{\textwidth}
+%       \includegraphics[width=0.85\textwidth]{oscilAnal_7.png}              
+%       \end{minipage}
+%     }
+%     \onslide<20>\put(5,90){\begin{minipage}{\textwidth}
+%       \includegraphics[width=0.85\textwidth]{oscilAnal_8.png}              
+%       \end{minipage}
+%     }
+%     \onslide<21-24>\put(5,90){\begin{minipage}{\textwidth}
+%       \includegraphics[width=0.85\textwidth]{oscilAnal_8_transparent.png}              
+%       \end{minipage}}  
+%       \put(5,90){\begin{minipage}{\textwidth}
+%       \includegraphics[width=0.85\textwidth]{ARexplain_1.png}              
+%       \end{minipage}}
+%       \onslide<22>\put(5,90){\begin{minipage}{\textwidth}
+%       \includegraphics[width=0.85\textwidth]{ARexplain_2.png}              
+%       \end{minipage}}
+%       \onslide<23>\put(5,90){\begin{minipage}{\textwidth}
+%       \includegraphics[width=0.85\textwidth]{ARexplain_3.png}              
+%       \end{minipage}}
+%       \onslide<24>\put(5,90){\begin{minipage}{\textwidth}
+%       \includegraphics[width=0.85\textwidth]{ARexplain_4.png}              
+%       \end{minipage}}
+%       \put(80,150){$\text{AR} = \frac{\color[rgb]{0.5,0.5,1}937}{1500}=0,63$}
+%      \onslide<25>\put(5,90){\begin{minipage}{\textwidth}
+%       \includegraphics[width=0.85\textwidth]{oscilAnal_8.png}              
+%       \end{minipage}
+%     }  
+%     \onslide<26>\put(5,90){\begin{minipage}{\textwidth}
+%       \includegraphics[width=0.85\textwidth]{oscilAnal_9.png}              
+%       \end{minipage}
+%     }
+%     \onslide<27>\put(5,90){\begin{minipage}{\textwidth}
+%       \includegraphics[width=0.85\textwidth]{oscilAnal_10.png}              
+%       \end{minipage}
+%     }
+%     \end{picture}
+% \end{frame}
+%------------------------------------------------------------------------%
+\begin{frame}
+    \frametitle{\textbf{Geração de força oscilatória}}
+    \begin{picture}(300,200)
+    \put(2,195){\begin{minipage}{\textwidth}\begin{equation*}
+       \onslide<1-13>\scriptscriptstyle FR(t) = \left\{\begin{array}{ccr}\color[rgb]{0,0,1}65&,& \color[rgb]{0,0,1}0\leqslant t < 60 \text{ s}\\					 			\color[rgb]{1,0,0} 65+20\sin(2\pi20t)[1+0,5\sin(2\pi t)]&,& \color[rgb]{1,0,0} 60 \text{ s} \leqslant t < 120\text{ s}\end{array}\right.\\
+     \end{equation*}
+     \end{minipage}}
+    \onslide<2>\put(5,75){\begin{minipage}{\textwidth}
+      \centering
+      \includegraphics[width=0.8\textwidth]{oscilAnal_1.png}              
+      \end{minipage}
+    }
+    \onslide<3>\put(5,75){\begin{minipage}{\textwidth}
+      \centering
+      \includegraphics[width=0.8\textwidth]{oscilAnal_5.png}              
+      \end{minipage}
+    }
+    \onslide<4>\put(5,75){\begin{minipage}{\textwidth}
+      \centering
+      \includegraphics[width=0.8\textwidth]{oscilAnal_6.png}              
+      \end{minipage}
+    }
+    \onslide<5>\put(5,75){\begin{minipage}{\textwidth}
+      \centering
+      \includegraphics[width=0.8\textwidth]{oscilAnal_7.png}              
+      \end{minipage}
+    }
+    \onslide<6>\put(5,75){\begin{minipage}{\textwidth}
+      \centering
+      \includegraphics[width=0.8\textwidth]{oscilAnal_8.png}              
+      \end{minipage}
+    }
+    \onslide<7-10>\put(5,75){\begin{minipage}{\textwidth}
+      \centering
+      \includegraphics[width=0.8\textwidth]{oscilAnal_8_transparent.png}              
+      \end{minipage}}  
+      \put(20,90){\begin{minipage}{\textwidth}
+      \includegraphics[width=0.8\textwidth]{ARexplain_1.png}              
+      \end{minipage}}
+      \onslide<8>\put(20,90){\begin{minipage}{\textwidth}
+      \includegraphics[width=0.8\textwidth]{ARexplain_2.png}              
+      \end{minipage}}
+      \onslide<9>\put(20,90){\begin{minipage}{\textwidth}
+      \includegraphics[width=0.8\textwidth]{ARexplain_3.png}              
+      \end{minipage}}
+      \onslide<10>\put(20,90){\begin{minipage}{\textwidth}
+      \includegraphics[width=0.8\textwidth]{ARexplain_4.png}              
+      \end{minipage}}
+      \put(80,150){$\text{AR} = \frac{\color[rgb]{0.5,0.5,1}937}{1500}=0,63$}
+     \onslide<11>\put(5,75){\begin{minipage}{\textwidth}
+      \centering
+      \includegraphics[width=0.8\textwidth]{oscilAnal_8.png}              
+      \end{minipage}
+    }  
+    \onslide<12>\put(5,75){\begin{minipage}{\textwidth}
+      \centering
+      \includegraphics[width=0.8\textwidth]{oscilAnal_9.png}              
+      \end{minipage}
+    }
+    \onslide<13->\put(5,75){\begin{minipage}{\textwidth}
+      \centering
+      \includegraphics[width=0.8\textwidth]{oscilAnal_10.png}              
+      \end{minipage}
+    }
+    \onslide<14>\put(2,195){\begin{minipage}{\textwidth}O mecanismo responsável pela não linearidade é o recrutamento dos motoneurônios, devido à gradação de suas propriedades.
+     \end{minipage}}
+    \end{picture}
+\end{frame}
+
+\subsection{Análise da influência dos aferentes Ia}
+%-------------------------------------------------------------------------%
+\begin{frame} 
+\frametitle{\textbf{Análise da influência dos aferentes Ia nas flutuações de baixa frequência }}
+	  \begin{picture}(300,200)
+	      \put(-10, 190){\small Sujeitos sentados, realizando flexão plantar em duas tarefas:}
+	      \put(-10, 175){\small Tarefa de Força (TF) e Tarefa de Posição (TP).}
+	      \put(-10, 155){\begin{minipage}{\textwidth}\small Torque em torno de 20\% da máxima contração voluntária  (dados de Mello (2011))\end{minipage}}
+	      \onslide<2->\put(20,40){\includegraphics[width=0.45\textwidth]{TorqueSpectrumSimExpTF_exp.pdf}}
+	      \put(170,40){\includegraphics[width=0.45\textwidth]{TorqueSpectrumSimExpTP_exp.pdf}}
+	      \onslide<3->\put(75,150){\scalebox{1.5}{\textcolor{red}{\vector(-1,-1){10}}}}
+	      \put(240,150){\scalebox{1.5}{\textcolor{red}{\vector(-1,-1){10}}}}
+	      \put(265,105){\scalebox{1.5}{\textcolor{red}{\vector(-1,-1){10}}}}
+	      \onslide<4->\put(0, 25){Qual a origem dos picos no espectro do torque?}
+	  \end{picture}
+\end{frame}
+%------------------------------------------------------------------------ %
+\begin{frame} 
+\frametitle{\textbf{Análise da influência dos aferentes Ia nas flutuações de baixa frequência }}
+	  \begin{picture}(300,200)
+	      \onslide<1->\put(20,120){\includegraphics[width=0.45\textwidth]{modelStruct_Ia.pdf}}
+	      \put(200,120){\includegraphics[width=0.3\textwidth]{foot.pdf}}
+	      \put(10, 55){\begin{minipage}{\textwidth} 
+		  \begin{itemize} 
+		  \item São utilizados {\bf 400 axônios} no comando descendente.
+		  \item Cada axônio do comando descendente se conecta com aproximadamente 30\% dos motoneurônios, de forma aleatória ({\bf conectividade de 30\%}).
+		  \item Em Tarefa de Força o ângulo $\theta$ é mantido constante e o sujeito tenta manter a força constante.
+		  \item Em Tarefa de Posição a carga $\mathbf{W}$ é  {\bf 20\% da MVC} e o sujeito tenta manter o ângulo $\theta$ constante.
+		  \end{itemize} 
+	      \end{minipage}}
+	   \end{picture}	   
+\end{frame}
+%-------------------------------------------------------------------------%
+%------------------------------------------------------------------%
+\begin{frame}
+ \frametitle{\textbf{Publicação}}
+\begin{picture}(300, 200)
+  \put(20,100){\includegraphics[width=\textwidth]{NER1.png}}
+\end{picture}
+\end{frame}
+%-----------------------------------------------------------------------%
+\begin{frame} 
+\frametitle{\textbf{Análise da influência dos aferentes Ia nas flutuações de baixa frequência}}
+	  \begin{picture}(300,200)
+	      \put(20,60){\includegraphics[height=0.5\textheight]{TorqueSpectrumSimExpTF_1.pdf}}
+	      \put(170,60){\includegraphics[height=0.5\textheight]{TorqueSpectrumSimExpTP_1.pdf}}
+	      \put(0, 30){\begin{minipage}{\textwidth}Os picos no espectro dos dados experimentais e simulados ocorrem nas mesmas frequências.\end{minipage}}
+	   \end{picture}
+\end{frame}
+%------------------------------------------------------------------------ %
+\begin{frame} 
+\frametitle{\textbf{Análises de coerência em Tarefa de Posição}}
+	  \begin{picture}(300,200)
+	      \onslide<1>\put(20,130){\includegraphics[width=0.6\textwidth]{modelStruct_Ia_pool.pdf}}
+	      \put(160,10){\includegraphics[width=0.5\textwidth]{cohMNMN.pdf}}
+	      \put(215, 170){$\gamma^2_{uy}(f)=\frac{\left|S_{uy}(f) \right|^2}{S_{uu}(f).S_{yy}(f)}$}
+	      \put(00, 75){\begin{minipage}{0.5\textwidth}Coerência entre a frequência de disparos de dois MNs aleatórios.\end{minipage}}
+	      \onslide<2>\put(20,130){\includegraphics[width=0.6\textwidth]{modelStruct_Ia_poolF.pdf}}
+	      \put(160,10){\includegraphics[width=0.5\textwidth]{cohMNTorque.pdf}}
+	      \put(215, 170){$\gamma^2_{uy}(f)=\frac{\left|S_{uy}(f) \right|^2}{S_{uu}(f).S_{yy}(f)}$}
+	      \put(0, 75){\begin{minipage}{0.5\textwidth}Coerência entre a frequência de disparos de um MN aleatório e o torque.\end{minipage}}
+	      \onslide<3>\put(20,130){\includegraphics[width=0.6\textwidth]{modelStruct_Ia_lIa.pdf}}
+	      \put(160,10){\includegraphics[width=0.5\textwidth]{cohlIa.pdf}}
+	      \put(215, 170){$\gamma^2_{uy}(f)=\frac{\left|S_{uy}(f) \right|^2}{S_{uu}(f).S_{yy}(f)}$}
+	      \put(0, 75){\begin{minipage}{0.5\textwidth}Coerência entre o comprimento muscular e frequência de disparos dos aferentes Ia.\end{minipage}}
+	      \onslide<4>\put(20,130){\includegraphics[width=0.6\textwidth]{modelStruct_Ia_MNIa.pdf}}
+	      \put(160,10){\includegraphics[width=0.5\textwidth]{cohMNIa.pdf}}
+	      \put(215, 170){$\gamma^2_{uy}(f)=\frac{\left|S_{uy}(f) \right|^2}{S_{uu}(f).S_{yy}(f)}$}
+	      \put(0, 75){\begin{minipage}{0.5\textwidth}Coerência entre frequência de disparos dos aferentes Ia e frequência de disparo de um MN.\end{minipage}}
+	  \end{picture}
+\end{frame}
+%-----------------------------------------------------------------------------%
+\begin{frame} 
+\frametitle{\textbf{Simulação com ausência de proprioceptores em Tarefa de Força}}
+	  \begin{picture}(300,200)
+	      \put(20,130){\includegraphics[width=0.6\textwidth]{modelStruct_noProp.pdf}}
+	      \put(160,10){\includegraphics[width=0.5\textwidth]{TorqueSpectrumSimExpTF.pdf}}
+	      \put(0, 75){\begin{minipage}{0.5\textwidth} Simulação de Tarefa de Força sem {\it feedback} dos fusos musculares.\end{minipage}}
+	   \end{picture}
+\end{frame}
+%-----------------------------------------------------------------------------------%
+\begin{frame} 
+\frametitle{\textbf{Indício de maior inibição pré-sináptica em Tarefa de Força do que em Tarefa de Posição}}
+	   \begin{picture}(300,200)
+	      \put(20,56){\includegraphics[width=0.45\textwidth]{TFhighcond.pdf}}
+	      \put(160,60){\includegraphics[width=0.45\textwidth]{TFTPCondpeaks.pdf}}
+	      \put(0, 20){\begin{minipage}{\textwidth} Em TF o ganho sináptico menor do que o ganho sináptico em TP. Isso sugere que, em sujeitos saudáveis, a inibição pré-sináptica nos aferentes Ia é maior em TF do que em TP.\end{minipage}}
+	   \end{picture}
+\end{frame}
+
+%--------------------------------------------------------------------------------%
+\subsection{Análise da postura ereta quieta}
+\begin{frame}
+\frametitle{\textbf{Intermitência nos disparos do Gastrocnêmio Medial no controle da postura ereta quieta}}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{Heroux2014.png}
+\footnotesize{Heroux et al. (2014)}
+\end{center}
+\end{frame}
+%------------------------------------------------------------------%
+\begin{frame}
+ \frametitle{\textbf{Modelo utilizado}}
+\begin{picture}(300, 200)
+  \put(-10,140){\includegraphics[scale=0.32]{modelStruct.pdf}}
+  \put(183,10){\includegraphics[scale=0.32]{SLC.eps}}
+  \put(10, 0){\includegraphics[trim=50 0 50 0, clip, width=0.2\textwidth]{invertedPendulum.pdf}}
+\end{picture}
+\end{frame}
+%------------------------------------------------------------------%
+\begin{frame}
+ \frametitle{\textbf{Publicação}}
+\begin{picture}(300, 200)
+  \put(20,100){\includegraphics[width=\textwidth]{plos1.png}}
+\end{picture}
+\end{frame}
+%----------------------------------------------------------------------- %
+\begin{frame}
+ \frametitle{\textbf{Resultados da simulação}}
+\begin{picture}(300, 200)
+  \put(10,10){\includegraphics[width = 0.9\textwidth]{posture1.png}} 
+\end{picture}
+\end{frame}
+%-------------------------------------------------------------------------
+\begin{frame}
+ \frametitle{\textbf{Resultados da simulação}}
+\begin{picture}(300, 200)
+  \put(10,50){\includegraphics[width = 0.4\textwidth]{angleOmega.png}} 
+  \put(150,50){\includegraphics[width = 0.4\textwidth]{torqueAngle.png}}
+  \put(10, 170){\begin{minipage}{0.8\textwidth} A intermitência dos disparos dos motoneurônios surge da dinâmica do controle medular.\end{minipage}}
+\end{picture}
+\end{frame}
+%-------------------------------------------------------------------------------------%
+\begin{frame}
+\frametitle{\textbf{Publicação}}
+\begin{picture}(300, 200)
+  \put(20,80){\includegraphics[width=\textwidth]{NERIEEE.png}}
+\end{picture}
+\end{frame}
+%-------------------------------------------------------------------------%
+\subsection{Variabilidade de força}
+\begin{frame}
+   \frametitle{\textbf{Variabilidade de força}}
+\begin{picture}(300, 200)
+  \onslide<1->\put(1, 3){\includegraphics[width=0.4\textwidth]{TFforce.png}}
+	\put(1,1){\tiny Magalhães e Kohn (2012)}
+	\put(150, 50){\includegraphics[width=0.4\textwidth]{COPCOM.png}}
+	\put(150,50){\tiny Magalhães e Kohn (2014)}
+\end{picture}
+\end{frame}
+%-------------------------------------------------------------------------------------%
+\begin{frame}
+\frametitle{\textbf{Publicação}}
+\begin{picture}(300, 200)
+  \put(20,80){\includegraphics[width=\textwidth]{JN1.png}}
+\end{picture}
+\end{frame}
+%-----------------------------------------------------------------------
+\begin{frame} 
+\frametitle{\textbf{Simulações com o modelo}}
+	  \begin{picture}(300,200)
+	      \put(20,130){\includegraphics[width=0.6\textwidth]{modelStruct_ident.pdf}}
+	      \put(50,0){\includegraphics[height=0.7\textheight]{poolStruct_PTTSTA_ident.pdf}}
+	      \put(120, 100){\begin{minipage}{0.6\textwidth} 
+		  \begin{itemize} 
+		  \item São utilizados {\bf 400 axônios} no comando descendente com distribuição Poisson.
+		  \item Cada axônio do comando descendente se conecta com aproximadamente 30\% dos motoneurônios, de forma aleatória ({\bf conectividade de 30\%}).
+		  \item Foram obtidos dados de {\bf 10\% a 80\% da contração voluntária máxima}.
+		  \end{itemize} 
+	      \end{minipage}}
+	   \end{picture}
+\end{frame}
+%-------------------------------------------------------------------------------------%
+\begin{frame}
+   \frametitle{\textbf{Resultados com o modelo}}
+\begin{picture}(300, 200)
+  \put(2,70){\includegraphics[width=0.6\textwidth]{forcaVar.png}}
+  \put(200, 3){\includegraphics[width=0.3\textwidth]{Gamma.png}}
+  \put(200,75){\tiny Gamma}
+  \put(200, 100){\includegraphics[width=0.3\textwidth]{Poisson.png}}
+  \put(200,175){\tiny Poisson}
+  \put(2,1){\includegraphics[width=0.6\textwidth]{CVTorque.png}}  
+\end{picture}
+\end{frame}
+%-------------------------------------------------------------------------------------%
+\begin{frame}
+   \frametitle{\textbf{Variabilidade dos intervalos entre disparos dos MNs}}
+\begin{picture}(300, 200)
+  \onslide<1->\put(2,30){\includegraphics[width=0.45\textwidth]{ISIJN.png}}
+  \put(2,20){\tiny Dados das simulações}
+  \onslide<2->\put(160,30){\includegraphics[width=0.45\textwidth]{ISISchmied.png}}  
+  \put(170,20){\begin{minipage}{0.45\textwidth}\tiny Dados de paciente sem aferentes Ia (Schmied, Forget e Vedel; 2014)\end{minipage}}
+\end{picture}
+\end{frame}
+% \begin{frame}
+
+%  \frametitle{\textbf{Considerações finais}}
+%  
+% \begin{itemize}
+%   \onslide<1->\item As funções de resposta em frequência generalizada obtidas do modelo identificado mostraram um comportamento não linear passa-baixas, ao contrário de  trabalhos prévios;
+%   \onslide<2->\item O modelo realista confirmou o que as funções de resposta em frequência generalizada mostraram;
+%   \onslide<3->\item Entradas motoneuronais oscilatórias em 20 Hz resultaram em uma coerência entre as entrada motoneuronais e disparos neurais similar às coerências corticomusculares encontradas experimentalmente;
+%   \onslide<4->\item As entradas oscilatórias na banda beta (20 Hz) provocaram um aumento na média da força, além de uma oscilação da força quando a entrada teve sua amplitude modulada.
+%   \onslide<5->\item O mecanismo que permite isso é o recrutamento dos motoneurônios devido à gradação de suas propriedades.
+%  \end{itemize}
+% \end{frame}
+%------------------------------------------------------------------------%
+\section{Perspectivas}
+\begin{frame}
+\frametitle{\textbf{Perspectivas}}
+
+\onslide<1->O modelo apresentado aqui, com algumas modificações, pode ser utilizado para outros estudos, como:
+
+\begin{itemize}
+ \onslide<2->\item Tarefas mais complexas (andar, correr, etc).
+      
+      {\tiny Necessário a utilização de modelos biomecânicos que incorporem os músculos e articulações envolvidos nestas tarefas.}
+      
+ \onslide<3->\item Patologias que afetam as entradas dos motoneurônios (espasticidade).
+ 
+  {\tiny Implementação de modelo de inibição pré-sináptica.}
+  
+ \onslide<4->\item Patologias motoneuronais (ELA).
+ 
+ {\tiny Inclusão de novos canais iônicos e de modelo da dinâmica energética.} 
+      
+ \onslide<5->\item Patologias nos axônios motores e sensoriais (Guillain-Barré).
+  
+ {\tiny Inclusão de modelos dos axônios, juntamente com modelo da bainha de mielina.}
+ 
+\end{itemize}
+
+\onslide<6> 
+Código em Python (em desenvolvimento) disponível em: \url{https://github.com/rnwatanabe/projectPR} .
+
+\end{frame}
+%------------------------------------------------------------------
+\newcounter{finalpage}
+\begin{frame}[plain]
+ \frametitle{\textbf{}}
+ \setcounter{finalpage}{\thepage}
+ \begin{picture}(300,200)
+  \put(100,100){ \LARGE Obrigado}
+ \end{picture} 
+\end{frame}
+%------------------------------------------------------------------- 
+%-------------------------------------------------------------------------
+%--------------blank pages-----------------------------------------------------%
+\begin{frame}[plain]
+ \frametitle{\textbf{}}
+ \begin{picture}(300,200)
+  \put(100,100){ \LARGE Obrigado}
+ \end{picture} 
+\end{frame}
+\begin{frame}[plain]
+ \frametitle{\textbf{}}
+ \begin{picture}(300,200)
+  \put(100,100){ \LARGE Obrigado}
+ \end{picture} 
+\end{frame}
+\begin{frame}[plain]
+ \frametitle{\textbf{}}
+ \begin{picture}(300,200)
+  \put(100,100){ \LARGE Obrigado}
+ \end{picture} 
+\end{frame}
+% ---------------------------------------------------------------------------- %
+% ---------------------------------------------------------------------------- %
+
+% ---------------------------------------------------------------------------- %
+% ---------------------------------------------------------------------------- %
+% \section*{Diferentes condições que ocorrem a demodulação das entradas}
+% % ---------------------------------------------------------------------------- %
+% % ---------------------------------------------------------------------------- %
+% \begin{frame} 
+% \frametitle{\textbf{Diferentes características do modelo}}
+% 	  \begin{picture}(300,200)
+% 	      \onslide<1>\put(50, 30){
+% 	      \includegraphics[width=0.55\textwidth]{force_deMod_Gamma.png}
+% 	      }
+% 	      \put(70, 10){Processos Gamma no comando descendente}
+% 	      \onslide<2>\put(50, 30){
+% 	      \includegraphics[width=0.55\textwidth]{force_deMod_Renshaw.png}
+% 	      }
+% 	      \put(100, 10){Células de Renshaw}
+% 	      \onslide<3>\put(50, 30){
+% 	      \includegraphics[width=0.55\textwidth]{force_deMod_AD.png}
+% 	      }
+% 	      \put(100, 10){Dendritos ativos}
+% 	  \end{picture}
+% \end{frame}
+% % ---------------------------------------------------------------------------- %
+% \begin{frame} 
+% \frametitle{\textbf{Diferentes frequências de modulação}}
+% 	  \begin{picture}(300,200)
+% 	      \onslide<1>\put(50, 30){
+% 	      \includegraphics[width=0.55\textwidth]{force_deMod_20.png}
+% 	      }
+% 	      \put(100, 10){$FR(t) = 65 + 20\cos(2\pi 20t)$}
+% 	      \onslide<2>\put(50, 30){
+% 	      \includegraphics[width=0.55\textwidth]{force_deMod_40.png}
+% 	      }
+% 	      \put(100, 10){$FR(t) = 65 + 20\cos(2\pi 40t)$}
+% 	      \onslide<3>\put(50, 30){
+% 	      \includegraphics[width=0.55\textwidth]{force_deMod_80.png}
+% 	      }
+% 	      \put(100, 10){$FR(t) = 65 + 20\cos(2\pi 80t)$}
+% 	  \end{picture}
+% \end{frame}
+% % ---------------------------------------------------------------------------- %
+% \begin{frame} 
+% \frametitle{\textbf{Diferentes frequências de modulação com amplitude modulada}}
+% 	  \begin{picture}(300,200)
+% 	      \onslide<1>\put(50, 30){
+% 	      \includegraphics[width=0.55\textwidth]{force_deMod_AM20.png}
+% 	      }
+% 	      \put(100, 10){$FR(t) = 65 + 20\cos(2\pi 20t)[1+0,5\cos(2\pi t)]$}
+% 	      \onslide<2>\put(50, 30){
+% 	      \includegraphics[width=0.55\textwidth]{force_deMod_AM40.png}
+% 	      }
+% 	      \put(100, 10){$FR(t) = 65 + 20\cos(2\pi 40t)[1+0,5\cos(2\pi t)]$}
+% 	      \onslide<3>\put(50, 30){
+% 	      \includegraphics[width=0.55\textwidth]{force_deMod_AM80.png}
+% 	      }
+% 	      \put(100, 10){$FR(t) = 65 + 20\cos(2\pi 80t)[1+0,5\cos(2\pi t)]$}
+% 	  \end{picture}
+% \end{frame}
+% % ---------------------------------------------------------------------------- %
+% \begin{frame} 
+% \frametitle{\textbf{Diferentes amplitudes da modulação}}
+% 	  \begin{picture}(300,200)
+% 	      \onslide<1>\put(50, 30){
+% 	      \includegraphics[width=0.55\textwidth]{force_deMod_peak10.png}
+% 	      }
+% 	      \put(100, 10){$FR(t) = 65 + 10\cos(2\pi 20t)$}
+% 	      \onslide<2>\put(50, 30){
+% 	      \includegraphics[width=0.55\textwidth]{force_deMod_peak20.png}
+% 	      }
+% 	      \put(100, 10){$FR(t) = 65 + 20\cos(2\pi 20t)$}
+% 	      \onslide<3>\put(50, 30){
+% 	      \includegraphics[width=0.55\textwidth]{force_deMod_AM25.png}
+% 	      }
+% 	      \put(100, 10){$FR(t) = 65 + 25\cos(2\pi 20t)$}
+% 	  \end{picture}
+% \end{frame}
+
+
+
+\end{document}
+
